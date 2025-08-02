@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Melani</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="spaceCanvas"></canvas>
+
+    <div id="introMessage">
+        <h1>Feliz día de la novia, cariño mío</h1>
+        <button id="startButton">Ver sorpresa</button>
+    </div>
+
+    <img id="falcon" src="img/falcon.png" alt="Halcón Milenario">
+
+    <div id="popup" class="hidden">
+        <p>Entrega espacial para Melani. ¿Desea abrirla?</p>
+        <button id="btnAbrir">Abrir Regalo</button>
+    </div>
+
+    <div id="romanticMessage" class="hidden" style="display: none;">
+        <div class="romantic-card">
+            <div class="card-header">
+                <div class="music-icon">♪</div>
+                <h1>Feliz Día de la Novia Mi Amor</h1>
+                <p class="date">1 de Agosto</p>
+            </div>
+            
+            <div class="flower-container">
+                <div class="flower-circle">
+                    <img src="img/ramo.png" alt="Ramo de flores" class="flower-bouquet">
+                </div>
+            </div>
+            
+            <div class="message-content">
+                <p class="message-text">En este día especial, quiero que sepas...</p>
+                <p class="love-message">Eres el amor que ilumina mi vida como el rosa en esta oscuridad.</p>
+            </div>
+            
+            <div class="heart-button">
+                <div class="heart-icon">❤</div>
+            </div>
+            
+            <div class="signature">
+                <p>Para ti, con amor</p>
+            </div>
+        </div>
+
+        <div id="longLetterCard" class="long-letter-card hidden">
+            <div class="letter-content">
+                <p class="letter-text"></p>
+            </div>
+            <div class="signature-long">
+                <p class="signature-text"></p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>

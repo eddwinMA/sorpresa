@@ -1,0 +1,453 @@
+/* ============================= */
+/* RESETEO Y FONDO GENERAL */
+/* ============================= */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: black;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* ============================= */
+/* CANVAS DE ESTRELLAS Y CORAZONES */
+/* ============================= */
+#spaceCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: black;
+}
+
+/* ============================= */
+/* MENSAJE INICIAL (BOTÓN DE INICIO) */
+/* ============================= */
+#introMessage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    transition: opacity 0.5s ease;
+}
+
+#introMessage h1 {
+    margin: 0 0 20px;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: #ffd6e8;
+}
+
+#introMessage button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #ff4d6d;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#introMessage button:hover {
+    background: #e63950;
+}
+
+/* ============================= */
+/* NAVE HALCÓN MILENARIO */
+/* ============================= */
+#falcon {
+    position: absolute;
+    top: 50%;
+    left: 120%;
+    transform: translate(-50%, -50%) scale(0.7);
+    transition: left 3s ease-in-out, opacity 0.5s ease;
+    z-index: 5;
+}
+
+/* ============================= */
+/* POPUP PARA ABRIR REGALO */
+/* ============================= */
+#popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #fff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    font-size: 1.3rem;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: fadeIn 0.8s ease forwards;
+}
+#popup.hidden {
+    opacity: 0;
+    display: none;
+}
+
+#popup button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #ff4d6d;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#popup button:hover {
+    background: #e63950;
+}
+
+#romanticMessage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    transition: opacity 0.5s ease;
+}
+
+.romantic-card,
+.long-letter-card {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.romantic-card {
+    background: linear-gradient(145deg, #1a0d1a, #2d1b2d);
+    border: 2px solid #ff69b4;
+    border-radius: 25px;
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    max-height: 90vh;
+    text-align: center;
+    box-shadow: 
+        0 0 30px rgba(255, 105, 180, 0.5),
+        inset 0 0 20px rgba(255, 105, 180, 0.1);
+    position: relative;
+    margin: auto;
+}
+
+.romantic-card.fade-out {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+.romantic-card.fade-in {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.long-letter-card {
+    background: linear-gradient(145deg, #2a1a2a, #4a334a);
+    border: 2px solid #ff69b4;
+    border-radius: 25px;
+    padding: 40px;
+    max-width: 600px;
+    width: 95%;
+    max-height: 95vh;
+    overflow-y: auto;
+    color: #ffd6e8;
+    text-align: left;
+    box-shadow: 
+        0 0 30px rgba(255, 105, 180, 0.5),
+        inset 0 0 20px rgba(255, 105, 180, 0.1);
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1.8;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.long-letter-card.fade-in {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+.long-letter-card.fade-out {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+    pointer-events: none;
+}
+
+.long-letter-card p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    white-space: pre-wrap;
+}
+
+.signature-long {
+    text-align: right;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: #ff69b4;
+    margin-top: 30px;
+    text-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
+    opacity: 0; 
+    transition: opacity 1s ease-in;
+}
+
+.signature-long.fade-in-dedication {
+    opacity: 1;
+}
+
+/* Nuevo estilo para el botón de volver */
+.back-button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#btnVolver {
+    padding: 12px 24px;
+    background: #4a334a; 
+    border: 2px solid #ff69b4;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#btnVolver:hover {
+    background: #ff69b4;
+    transform: scale(1.05);
+}
+
+
+.romantic-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 105, 180, 0.1), transparent);
+    pointer-events: none;
+}
+
+.card-header {
+    margin-bottom: 25px;
+}
+
+.music-icon {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ff69b4;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #ff69b4;
+    animation: pulse 2s infinite;
+}
+
+.card-header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: #ff69b4;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+}
+
+.date {
+    color: #cccccc;
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 300;
+}
+
+.flower-container {
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.flower-circle {
+    width: 120px;
+    height: 120px;
+    border: 3px solid #ff69b4;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, rgba(255, 105, 180, 0.2), rgba(255, 105, 180, 0.05));
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.4), inset 0 0 15px rgba(255, 105, 180, 0.1);
+    animation: floatFlower 3s ease-in-out infinite;
+}
+
+.flower-bouquet {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.3));
+}
+
+.message-content {
+    margin: 25px 0;
+}
+
+.message-text {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin: 0 0 15px 0;
+    font-weight: 400;
+}
+
+.love-message {
+    color: #ff69b4;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+    text-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
+}
+
+.heart-button {
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.heart-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(145deg, #ff4d6d, #ff69b4);
+    border: 2px solid #ff69b4;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+.heart-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.8);
+}
+
+.signature {
+    margin-top: 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    color: #ff69b4;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.signature p {
+    margin: 0;
+    text-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+/* ============================= */
+/* ANIMACIONES */
+/* ============================= */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+@keyframes floatFlower {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ============================= */
+/* RESPONSIVE DESIGN */
+/* ============================= */
+@media (max-width: 480px) {
+    .romantic-card {
+        padding: 20px;
+        margin: 10px;
+        width: 95%;
+    }
+
+    .long-letter-card {
+        padding: 30px;
+        font-size: 0.9rem;
+    }
+    
+    .card-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .flower-circle {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .flower-bouquet {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .message-text, .love-message {
+        font-size: 1rem;
+    }
+}
